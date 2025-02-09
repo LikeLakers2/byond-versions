@@ -1,4 +1,6 @@
 #!/bin/sh
+set -euo pipefail
+
 THIS_SCRIPT_DIR=$( dirname $( realpath $0 ) )
 BYOND_EXEC="$THIS_SCRIPT_DIR/byondexec"
 

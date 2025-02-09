@@ -1,11 +1,12 @@
 #!/bin/bash
+set -euo pipefail
 
 mkdir build_windows
 cd ./build_windows
 
 THIS_SCRIPT_DIR=$( dirname $( realpath $0 ) )
 
-bash $THIS_SCRIPT_DIR/download_and_extract.sh "https://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond.zip"
+bash -e $THIS_SCRIPT_DIR/download_and_extract.sh "https://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond.zip"
 cd ./byond
 
 # Delete some unnecessary files, to make the download smaller

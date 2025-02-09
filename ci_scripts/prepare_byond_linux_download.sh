@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 
 mkdir build_linux
 cd ./build_linux
