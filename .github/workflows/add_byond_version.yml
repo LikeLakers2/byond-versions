@@ -1,0 +1,41 @@
+name: Add BYOND version
+
+on:
+  workflow_dispatch:
+    inputs:
+      major:
+        description: The major version of BYOND to add (the part before the `.`)
+        required: true
+        type: number
+      minor:
+        description: The minor version of BYOND to add (the part after the `.`)
+        required: true
+        type: number
+
+permissions:
+  contents: write
+
+env:
+  BYOND_MAJOR: ${{inputs.major}}
+  BYOND_MINOR: ${{inputs.minor}}
+  NEW_RELEASE_TITLE: "BYOND ${{inputs.major}}.${{inputs.minor}}"
+  NEW_TAG_NAME: "byond_${{inputs.major}}.${{inputs.minor}}"
+
+jobs:
+  add_byond_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare BYOND Linux download
+        run: bash $GITHUB_WORKSPACE/ci_scripts/prepare_byond_linux_download.sh
+      - name: Prepare BYOND Windows download
+        run: bash $GITHUB_WORKSPACE/ci_scripts/prepare_byond_windows_download.sh
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{github.token}}
+        run: |
+          gh release create \
+            --title "${{env.NEW_RELEASE_TITLE}}" \
+            "${{env.NEW_TAG_NAME}}" \
+            build_linux/byond_linux.zip \
+            build_windows/byond_windows.zip
