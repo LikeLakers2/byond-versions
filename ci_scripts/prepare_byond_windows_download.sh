@@ -1,10 +1,10 @@
 #!/bin/bash
 set -euo pipefail
 
+THIS_SCRIPT_DIR=$( dirname $( realpath $0 ) )
+
 mkdir build_windows
 cd ./build_windows
-
-THIS_SCRIPT_DIR=$( dirname $( realpath $0 ) )
 
 bash -e $THIS_SCRIPT_DIR/download_and_extract.sh "https://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond.zip"
 cd ./byond
@@ -17,4 +17,4 @@ rm -r ./help/
 cd ..
 
 # Finally, create the new zip file
-zip -r byond_windows.zip byond/
+zip -rq byond_windows.zip byond/
