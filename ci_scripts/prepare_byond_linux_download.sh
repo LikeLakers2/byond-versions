@@ -5,7 +5,7 @@ cd ./build_linux
 
 THIS_SCRIPT_DIR=$( dirname $( realpath $0 ) )
 
-$THIS_SCRIPT_DIR/download_and_extract.sh "https://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip"
+bash $THIS_SCRIPT_DIR/download_and_extract.sh "https://www.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip"
 cd ./byond
 
 # Create .sh files for each of the programs, that directs to `byondexec`. `byondexec` sets
