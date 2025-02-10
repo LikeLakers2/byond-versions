@@ -25,6 +25,7 @@ for BYOND_EXECUTABLE in $( find ./bin -type f -executable ); do
 	echo "Writing redirection script for $EXEC_NAME"
 	SCRIPT_FILE_NAME="$EXEC_NAME"
 	cp $THIS_SCRIPT_DIR/byond_linux_assets/byond_bin_exec ./bin_redirects/$SCRIPT_FILE_NAME
+	chmod +x ./bin_redirects/$SCRIPT_FILE_NAME
 done
 
 # Delete some unnecessary files, to make the download smaller.
