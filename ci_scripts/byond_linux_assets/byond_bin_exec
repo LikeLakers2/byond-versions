@@ -10,6 +10,6 @@ BYOND_PROGRAM_TO_EXEC="$REAL_BIN_DIR/$THIS_SCRIPT_NAME"
 
 shift 1
 
-# We use `bash` here, as `byondexec` attempts to use `[[` - which is special syntax not available to
-# `sh`.
+# We use `bash` here, as `byondexec` (despite being marked `#!/bin/sh`) attempts to use `[[` - which
+# is special syntax not available to `sh`.
 bash "$BYOND_EXEC" "$BYOND_PROGRAM_TO_EXEC" "$@"
