@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 THIS_SCRIPT_DIR=$( dirname $( realpath $0 ) )
 REAL_BIN_DIR=$( realpath "$THIS_SCRIPT_DIR/../bin" )
@@ -10,4 +10,6 @@ BYOND_PROGRAM_TO_EXEC="$REAL_BIN_DIR/$THIS_SCRIPT_NAME"
 
 shift 1
 
-"$BYOND_EXEC" "$BYOND_PROGRAM_TO_EXEC" "$@"
+# We use `bash` here, as `byondexec` attempts to use `[[` - which is special syntax not available to
+# `sh`.
+bash "$BYOND_EXEC" "$BYOND_PROGRAM_TO_EXEC" "$@"
